@@ -15,7 +15,6 @@ function ShowCards() {
     axios
       .get(`http://localhost:9000/myCards/${id}`)
       .then((response) => {
-        console.log(response.data)
         setCards(response.data);
         setCardImage(response.data.cardImg)
         setLoading(false);

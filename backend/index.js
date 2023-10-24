@@ -23,7 +23,6 @@ app.use(cors())
 
 //The home page
 app.get('/', (request, response) => {
-    console.log(request)
     return response.status(234).send("Hello World") 
 });
 

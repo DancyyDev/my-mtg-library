@@ -97,6 +97,44 @@ router.put("/:id", async (request, response) => {
   }
 });
 
+//Update card Quantity
+router.put("/quantityUp/:id", async (request, response) => {
+  try {
+    const { id } = request.params;
+
+    const updateCardQuantity = await Card.findByIdAndUpdate(id, request.body);
+
+    if (!updateCardQuantity) {
+      return response.status(404).json({ message: "Card not Found" });
+    }
+    console.log("update successful")
+    return response.status(200).send({ message: "Update Successful" });
+
+  } catch (error) {
+    console.log(error);
+    response.status(500).send({ message: error.message });
+  }
+});
+router.put("/quantityDown/:id", async (request, response) => {
+  try {
+    const { id } = request.params;
+
+    const updateCardQuantity = await Card.findByIdAndUpdate(id, request.body);
+
+    if (!updateCardQuantity) {
+      return response.status(404).json({ message: "Card not Found" });
+    }
+
+    return response.status(200).send({ message: "Update Successful" });
+
+  } catch (error) {
+    console.log(error);
+    response.status(500).send({ message: error.message });
+  }
+});
+
+
+
 //Deleting a card from the database
 router.delete("/:id", async (request, response) => {
   try {
