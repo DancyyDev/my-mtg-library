@@ -1,31 +1,29 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { HiChevronLeft } from "react-icons/hi";
 import { HiChevronRight } from "react-icons/hi";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 function UpdateQuantity({ card }) {
-  let cardQ = card.cardQuantity;
   const [loading, setLoading] = useState(false);
-  const [cardQuantity, setCardQuantity] = useState(card.cardQuantity);
+  const [cardQuantity, setCardQuantity] = useState(0);
   const navigate = useNavigate();
 
   const increaseQuantity = () => {
-    setCardQuantity( cardQuantity => cardQuantity + 1);
-    
-    // handleCardQuantity()
-    console.log("cardQuantity", cardQuantity);
+    let increase = cardQuantity + 1;
+    console.log("increase", increase);
 
     const data = {
-        cardQuantity,
-      };
-    
+      cardQuantity: increase,
+    };
+
     console.log(data);
     setLoading(true);
     axios
       .put(`http://localhost:9000/myCards/quantityUp/${card._id}`, data)
       .then(() => {
         console.log("sending update");
+
         setLoading(false);
         navigate("/");
       })
@@ -34,15 +32,14 @@ function UpdateQuantity({ card }) {
         setLoading(false);
         alert("Error in Update axios: check console log");
       });
-      console.log("new quantity", card.cardQuantity)
   };
 
   const decreaseQuantity = () => {
     if (cardQuantity <= 1) {
-        setCardQuantity(card.cardQuantity);
+      setCardQuantity(increase);
     }
     setCardQuantity(card.cardQuantity--);
-    console.log("decrease", cardQuantity)
+    console.log("decrease", cardQuantity);
 
     const data = {
       cardQuantity,
@@ -87,7 +84,9 @@ function UpdateQuantity({ card }) {
       <button onClick={decreaseQuantity}>
         <HiChevronLeft className="text-2xl text-green-600" />
       </button>
-        { card.cardQuantity }
+
+      {card.cardQuantity}
+
       <button onClick={increaseQuantity}>
         <HiChevronRight className="text-2xl text-green-600" />
       </button>
