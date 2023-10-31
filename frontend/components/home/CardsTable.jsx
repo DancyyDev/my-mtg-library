@@ -6,9 +6,6 @@ import { HiChevronRight } from "react-icons/hi";
 import UpdateQuantity from "../UpdateQuantity";
 
 function CardsTable({ cards }) {
-
- 
-
   return (
     <table className="w-full border-seperate border-spacing-2">
       <thead>
@@ -25,12 +22,12 @@ function CardsTable({ cards }) {
         {cards.map((card) => (
           <tr key={card._id} className="h-8">
             <td className="border border-slate-700 rounded-md text-center">
-              {/* <img src={card.cardImg.art_crop} /> */}
+              <img src={card.cardImg.art_crop} className="scale-50" />
               {/* {card._id} */}
             </td>
             <td className="border border-slate-700 rounded-md text-center">
               <div className="flex justify-center gap-x-2">
-              <UpdateQuantity card={card}/>                
+                <UpdateQuantity card={card} />
               </div>
             </td>
             <td className="border border-slate-700 rounded-md text-center">

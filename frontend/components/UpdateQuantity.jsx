@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 function UpdateQuantity({ card }) {
   const [loading, setLoading] = useState(false);
-  const [cardQuantity, setCardQuantity] = useState(0);
+  const [cardQuantity, setCardQuantity] = useState(card.cardQuantity);
   const navigate = useNavigate();
 
   const increaseQuantity = () => {
@@ -17,13 +17,13 @@ function UpdateQuantity({ card }) {
       cardQuantity: increase,
     };
 
-    console.log(data);
     setLoading(true);
+    setCardQuantity(increase)
+
     axios
       .put(`http://localhost:9000/myCards/quantityUp/${card._id}`, data)
       .then(() => {
         console.log("sending update");
-
         setLoading(false);
         navigate("/");
       })
@@ -31,21 +31,22 @@ function UpdateQuantity({ card }) {
         console.log(error);
         setLoading(false);
         alert("Error in Update axios: check console log");
-      });
+      })
   };
 
   const decreaseQuantity = () => {
-    if (cardQuantity <= 1) {
-      setCardQuantity(increase);
+    let decrease = cardQuantity - 1
+    if (decrease <= 1) {
+      decrease = 1;
     }
-    setCardQuantity(card.cardQuantity--);
-    console.log("decrease", cardQuantity);
+    console.log("decrease", decrease);
 
     const data = {
-      cardQuantity,
+      cardQuantity: decrease,
     };
-
     setLoading(true);
+    setCardQuantity(decrease)
+
     axios
       .put(`http://localhost:9000/myCards/quantityDown/${card._id}`, data)
       .then(() => {
@@ -85,7 +86,7 @@ function UpdateQuantity({ card }) {
         <HiChevronLeft className="text-2xl text-green-600" />
       </button>
 
-      {card.cardQuantity}
+      {cardQuantity}
 
       <button onClick={increaseQuantity}>
         <HiChevronRight className="text-2xl text-green-600" />

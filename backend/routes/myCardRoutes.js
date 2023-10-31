@@ -99,7 +99,16 @@ router.put("/:id", async (request, response) => {
 
 //Update card Quantity
 router.put("/quantityUp/:id", async (request, response) => {
+  console.log(request)
   try {
+    
+    if (
+      !request.body.cardQuantity
+    ) {
+      return response.status(400).send({
+        message: "Send all required fields.",
+      });
+    }
     const { id } = request.params;
 
     const updateCardQuantity = await Card.findByIdAndUpdate(id, request.body);
@@ -107,6 +116,7 @@ router.put("/quantityUp/:id", async (request, response) => {
     if (!updateCardQuantity) {
       return response.status(404).json({ message: "Card not Found" });
     }
+    
     console.log("update successful")
     return response.status(200).send({ message: "Update Successful" });
 
