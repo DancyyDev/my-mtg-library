@@ -32,7 +32,7 @@ mongoose.connect(mongodbURL)
     .then(()=> {
         console.log("Connected to database")
         app.listen(PORT, () => {
-            console.log(`App is live on ${PORT}`)
+            console.log(`App is live`)
         })
     })
     .catch((error)=> {

@@ -105,7 +105,7 @@ function CreateCards() {
           <div key={card.id} className="focus:grayscale">
             
             <img 
-              src={card.image_uris.small} 
+              src={!card.image_uris.small ? card.image_uris.art_crop :card.image_uris.small} 
               alt={card.name}
               value={card.name}
               onClick={ handleSaveCard }

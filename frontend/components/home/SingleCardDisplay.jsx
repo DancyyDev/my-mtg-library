@@ -9,8 +9,8 @@ import { useState } from "react";
 function SingleCardDisplay({ card }) {
     // const [cardModel, setCardModel] = useState()
   return (
-    <div className="border-2 border-gray-500 rounded-lg px-4 py-2 m-4 relative hover:shadow-xl">
-      <h2 className="absolute top-1 right-2 px-4 py-1 bg-red-300 rounded-lg">
+    <div className="mt-6 px-4 py-2">
+      {/* <h2 className="absolute top-1 right-2 px-4 py-1 bg-red-300 rounded-lg">
         {card.manaCost}
       </h2>
       <h4 className="my-2 text-gray-500">{card._id}</h4>
@@ -28,6 +28,15 @@ function SingleCardDisplay({ card }) {
         </Link>
         <Link to={`/myCards/edit/${card._id}`}>
           <AiOutlineEdit className="text-2xl text-yellow-600 hover:text-black" />
+        </Link>
+        <Link to={`/myCards/delete/${card._id}`}>
+          <MdOutlineDelete className="text-2xl text-red-600 hover:text-black" />
+        </Link>
+      </div> */}
+      <img src={card.cardImg.normal} alt={card.name}/>
+      <div className="flex justify-between items-center gap-x-2 mt-4 p-4">
+        <Link to={`/myCards/show/${card._id}`}>
+          <BsInfoCircle className="text-2xl text-green-800 hover:text-black" />
         </Link>
         <Link to={`/myCards/delete/${card._id}`}>
           <MdOutlineDelete className="text-2xl text-red-600 hover:text-black" />

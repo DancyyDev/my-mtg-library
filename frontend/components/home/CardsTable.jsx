@@ -21,8 +21,8 @@ function CardsTable({ cards }) {
       <tbody>
         {cards.map((card) => (
           <tr key={card._id} className="h-8">
-            <td className="border border-slate-700 rounded-md text-center">
-              <img src={card.cardImg.art_crop} className="scale-50" />
+            <td className="border border-slate-700 rounded-md w-1">
+              <img src={card.cardImg.art_crop} className="w-3" />
               {/* {card._id} */}
             </td>
             <td className="border border-slate-700 rounded-md text-center">
