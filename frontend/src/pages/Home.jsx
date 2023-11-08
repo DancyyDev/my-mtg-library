@@ -14,7 +14,7 @@ function Home() {
   useEffect(() => {
     setLoading(true);
     axios
-      .get("http://localhost:9000/myCards/")
+      .get("http://localhost:9000/myCards/getCards")
       .then((response) => {
         setCards(response.data.data);
         setLoading(false);
@@ -33,12 +33,15 @@ function Home() {
         </div>
       <div className="flex justify-between items-center">
         <h1 className="text-3xl my-8">Card List</h1>
+
         <Link to="/myCards/create">
           <MdOutlineAddBox className="text-sky-800 text-4xl" />
         </Link>
 
         <Link to="/myCards/search">
-          <button>Search Card</button>
+          <button className='border-solid border-2 border-indigo-600 rounded-lg hover:bg-indigo-300'>
+            <h3 className="text-2xl px-3 py-1">Search Card</h3>
+            </button>
         </Link>
       </div>
       {loading ? <Spinner /> : showType === 'table' ? (<CardsTable cards={cards} />) : (<CardsDisplay cards={cards}/>)}

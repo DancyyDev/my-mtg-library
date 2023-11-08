@@ -40,7 +40,7 @@ router.post("/", async (request, response) => {
 });
 
 //Finding all the cards in database
-router.get("/", async (request, response) => {
+router.get("/getCards", async (request, response) => {
   try {
     console.log("request" ,request)
     const cards = await Card.find({});
@@ -52,9 +52,24 @@ router.get("/", async (request, response) => {
   } catch (error) {
     console.log(error);
     response.status(500).send({ message: error.message });
-  } finally {
+  } 
+});
 
-  }
+router.get("/searchCards/:oracleText", async (request, response) => {
+  try {
+
+    
+    const cards = await Card.find({});
+    
+
+    return response.status(200).json({
+      count: cards.length,
+      data: cards,
+    });
+  } catch (error) {
+    console.log(error);
+    response.status(500).send({ message: error.message });
+  } 
 });
 
 // Finding a Single Card in database
@@ -142,8 +157,6 @@ router.put("/quantityDown/:id", async (request, response) => {
     response.status(500).send({ message: error.message });
   }
 });
-
-
 
 //Deleting a card from the database
 router.delete("/:id", async (request, response) => {
