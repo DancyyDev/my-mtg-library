@@ -12,7 +12,7 @@ function SearchCards() {
           return;
         }
       await axios
-      .get("http://localhost:9000/myCards/searchCards")
+      .get("http://localhost:9000/myCards/searchCards/")
       .then((response) => {
         setMyCards(response.data.data);
         console.log(myCards)
