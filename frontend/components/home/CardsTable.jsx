@@ -3,7 +3,7 @@ import { AiOutlineEdit } from "react-icons/ai";
 import { MdOutlineDelete } from "react-icons/md";
 import UpdateQuantity from "../UpdateQuantity";
 
-function CardsTable({ cards, symbol }) {
+function CardsTable({ cards }) {
 
   return (
     <table className="w-full border-seperate border-spacing-2">
@@ -32,8 +32,10 @@ function CardsTable({ cards, symbol }) {
             <td className="border border-slate-700 rounded-md text-center">
               <Link to={`/myCards/show/${card._id}`}>{card.name}</Link>
             </td>
-            <td className="border border-slate-700 rounded-md text-center">
-              {card.manaCost}
+            <td className="border border-slate-700 rounded-md text-center flex flex-row">
+              {card.manaCost.map(colors => (
+                <img src={colors} key ={colors} alt='cmc' width='20rem' height='20rem' className="self-center" />
+              ))}
             </td>
             <td className="border border-slate-700 rounded-md text-center">
               {card.oracleText}

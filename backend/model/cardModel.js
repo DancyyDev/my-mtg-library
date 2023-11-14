@@ -7,7 +7,7 @@ const cardSchema = mongoose.Schema(
             required: true,
         },
         manaCost: {
-            type: String,
+            type: Array,
             required: true,
         },
         oracleText: {
