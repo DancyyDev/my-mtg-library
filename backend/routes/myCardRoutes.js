@@ -42,7 +42,6 @@ router.post("/", async (request, response) => {
 //Finding all the cards in database
 router.get("/getCards", async (request, response) => {
   try {
-    console.log("request" ,request)
     const cards = await Card.find({});
 
     return response.status(200).json({
@@ -57,11 +56,9 @@ router.get("/getCards", async (request, response) => {
 
 router.get("/searchCards/:oracleText", async (request, response) => {
   try {
-
     
     const cards = await Card.find({});
     
-
     return response.status(200).json({
       count: cards.length,
       data: cards,

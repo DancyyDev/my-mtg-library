@@ -1,11 +1,10 @@
 import { Link } from "react-router-dom";
 import { AiOutlineEdit } from "react-icons/ai";
 import { MdOutlineDelete } from "react-icons/md";
-import { HiChevronLeft } from "react-icons/hi";
-import { HiChevronRight } from "react-icons/hi";
 import UpdateQuantity from "../UpdateQuantity";
 
-function CardsTable({ cards }) {
+function CardsTable({ cards, symbol }) {
+
   return (
     <table className="w-full border-seperate border-spacing-2">
       <thead>

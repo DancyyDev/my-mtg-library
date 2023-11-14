@@ -10,6 +10,21 @@ function Home() {
   const [cards, setCards] = useState([]);
   const [loading, setLoading] = useState(false);
   const [showType, setShowType] = useState('table')
+  const [symbol, setSymbol] = useState([])
+
+  // useEffect(() => {
+  //   setLoading(true);
+  //   axios
+  //     .get("https://api.scryfall.com/symbology")
+  //     .then((response) => {
+  //       setSymbol(response.data.data);
+  //       setLoading(false);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //       setLoading(false);
+  //     });
+  // }, []);
 
   useEffect(() => {
     setLoading(true);
@@ -44,7 +59,7 @@ function Home() {
             </button>
         </Link>
       </div>
-      {loading ? <Spinner /> : showType === 'table' ? (<CardsTable cards={cards} />) : (<CardsDisplay cards={cards}/>)}
+      {loading ? <Spinner /> : showType === 'table' ? (<CardsTable cards={cards} symbol={symbol}/>) : (<CardsDisplay cards={cards}/>)}
     </div>
   );
 }
