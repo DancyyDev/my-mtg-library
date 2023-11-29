@@ -62,20 +62,9 @@ function CreateCards() {
     let colorArr = []
     const cardData = addCard.filter((x) => x.name === e.target.alt);
 
-    let convertedManaCost = cardData[0].mana_cost.replaceAll("}", "},").split(",").slice(0, -1);
-
-    const manaCostImg = convertedManaCost.forEach((pip) => {
-      colors.filter(card => {
-        if(card.symbol === pip){
-          colorArr.push(card.svg_uri)
-        }
-      });
-    });
-    console.log(manaCostImg)
-
     const data = {
       name: cardData[0].name,
-      manaCost: colorArr,
+      manaCost: cardData[0].mana_cost,
       oracleText: cardData[0].oracle_text,
       color: cardData[0].colors,
       cardImg: cardData[0].image_uris,
