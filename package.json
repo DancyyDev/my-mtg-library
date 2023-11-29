@@ -5,10 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "cd frontend vite build",
+    "build": "cd frontend && vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "start": "cd backend node index.js"
+    "start": "cd backend && node index.js"
   },
   "dependencies": {
     "@react-icons/all-files": "^4.1.0",
